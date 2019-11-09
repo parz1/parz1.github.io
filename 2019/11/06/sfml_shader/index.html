@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>SFML引入shader/Import shaders(SFML) - 仮想化</title>
+
+
+    <meta name="description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SFML引入shader&#x2F;Import shaders(SFML)">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;sfml_shader&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;gallery&#x2F;thumbnails&#x2F;2.png">
+<meta property="og:updated_time" content="2019-11-09T17:58:20.581Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;gallery&#x2F;thumbnails&#x2F;2.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151506271-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151506271-1');
+</script>
+
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="SFML引入shader/Import shaders(SFML)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnails/2.png" alt="SFML引入shader/Import shaders(SFML)">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-06T13:57:36.000Z">2019-11-06</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1203 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                SFML引入shader/Import shaders(SFML)
+            
+        </h1>
+        <div class="content">
+            <p>既然学了<em>sfml</em>这种歪门邪道的东西，就试试里面的shader</p>
+<a id="more"></a>
+<p>说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料</p>
+<h3 id="sf-Shader"><a href="#sf-Shader" class="headerlink" title="sf::Shader"></a>sf::Shader</h3><p>首先还是sfml对于引入shader的官方文档：</p>
+<blockquote>
+<p>In SFML, shaders are represented by the <a href="https://www.sfml-dev.org/documentation/2.0/classsf_1_1Shader.php" target="_blank" rel="noopener"><code>sf::Shader</code></a> class. It handles both the vertex and fragment shaders: A <a href="https://www.sfml-dev.org/documentation/2.0/classsf_1_1Shader.php" target="_blank" rel="noopener"><code>sf::Shader</code></a> object is a combination of both (or only one, if the other is not provided).</p>
+<p>意思是 sfml 中也有两种shader类即顶点着色器和片元着色器 shader要结合两者进行</p>
+</blockquote>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (!sf::Shader::isAvailable())</span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-comment">// 检验shader是否有效</span></span><br><span class="line">    <span class="hljs-comment">// shaders are not available...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对sf::Shader的使用如下：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sf::Shader shader;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load only the vertex shader</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromFile(<span class="hljs-string">"vertex_shader.vert"</span>, sf::Shader::Vertex))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load only the fragment shader</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromFile(<span class="hljs-string">"fragment_shader.frag"</span>, sf::Shader::Fragment))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load both shaders</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromFile(<span class="hljs-string">"vertex_shader.vert"</span>, <span class="hljs-string">"fragment_shader.frag"</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而对于shader源文件，文档解释如下：</p>
+<blockquote>
+<p>Shaders can also be loaded directly from strings, with the <code>loadFromMemory</code> function. This can be useful if you want to embed the shader source directly into your program.</p>
+<p>即shader可由string和文件引入</p>
+</blockquote>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> vertexShader = \</span><br><span class="line">    <span class="hljs-string">"void main()"</span> \</span><br><span class="line">    <span class="hljs-string">"&#123;"</span> \</span><br><span class="line">    <span class="hljs-string">"    ..."</span> \</span><br><span class="line">    <span class="hljs-string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> fragmentShader = \</span><br><span class="line">    <span class="hljs-string">"void main()"</span> \</span><br><span class="line">    <span class="hljs-string">"&#123;"</span> \</span><br><span class="line">    <span class="hljs-string">"    ..."</span> \</span><br><span class="line">    <span class="hljs-string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load only the vertex shader</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromMemory(vertexShader, sf::Shader::Vertex))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load only the fragment shader</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromMemory(fragmentShader, sf::Shader::Fragment))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load both shaders</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromMemory(vertexShader, fragmentShader))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> vertexShader = \</span><br><span class="line">    <span class="hljs-string">"void main()"</span> \</span><br><span class="line">    <span class="hljs-string">"&#123;"</span> \</span><br><span class="line">    <span class="hljs-string">"    ..."</span> \</span><br><span class="line">    <span class="hljs-string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> fragmentShader = \</span><br><span class="line">    <span class="hljs-string">"void main()"</span> \</span><br><span class="line">    <span class="hljs-string">"&#123;"</span> \</span><br><span class="line">    <span class="hljs-string">"    ..."</span> \</span><br><span class="line">    <span class="hljs-string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load only the vertex shader</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromMemory(vertexShader, sf::Shader::Vertex))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load only the fragment shader</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromMemory(fragmentShader, sf::Shader::Fragment))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// load both shaders</span></span><br><span class="line"><span class="hljs-keyword">if</span> (!shader.loadFromMemory(vertexShader, fragmentShader))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">// error...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Shader-vert-frag"><a href="#Shader-vert-frag" class="headerlink" title="Shader.vert/.frag"></a>Shader.vert/.frag</h3><p>后缀名其实无所谓，源于文档解释</p>
+<blockquote>
+<p>Shader source is contained in simple text files (like your C++ code). Their extension doesn’t really matter, it can be anything you want, you can even omit it. “.vert” and “.frag” are just examples of possible extensions.</p>
+</blockquote>
+<p>给出水波纹shader的源码：</p>
+<p><strong>shader.frag</strong></p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#version 130</span></span><br><span class="line">#水波纹shader</span><br><span class="line"></span><br><span class="line">uniform sampler2D currentTexture; <span class="hljs-comment">// Our render texture</span></span><br><span class="line">uniform sampler2D distortionMapTexture; <span class="hljs-comment">// Our heat distortion map texture</span></span><br><span class="line"></span><br><span class="line">uniform <span class="hljs-keyword">float</span> time; <span class="hljs-comment">// Time used to scroll the distortion map</span></span><br><span class="line">uniform <span class="hljs-keyword">float</span> distortionFactor; <span class="hljs-comment">// Factor used to control severity of the effect</span></span><br><span class="line">uniform <span class="hljs-keyword">float</span> riseFactor; <span class="hljs-comment">// Factor used to control how fast air rises</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    vec2 distortionMapCoordinate = gl_TexCoord[<span class="hljs-number">0</span>].st;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// We use the time value to scroll our distortion texture upwards</span></span><br><span class="line">    <span class="hljs-comment">// Since we enabled texture repeating, OpenGL takes care of</span></span><br><span class="line">    <span class="hljs-comment">// coordinates that lie outside of [0, 1] by discarding</span></span><br><span class="line">    <span class="hljs-comment">// the integer part and keeping the fractional part</span></span><br><span class="line">    <span class="hljs-comment">// Basically performing a "floating point modulo 1"</span></span><br><span class="line">    <span class="hljs-comment">// 1.1 = 0.1, 2.4 = 0.4, 10.3 = 0.3 etc.</span></span><br><span class="line">    distortionMapCoordinate.t -= time * riseFactor;</span><br><span class="line"></span><br><span class="line">    vec4 distortionMapValue = texture2D(distortionMapTexture, distortionMapCoordinate);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// The values are normalized by OpenGL to lie in the range [0, 1]</span></span><br><span class="line">    <span class="hljs-comment">// We want negative offsets too, so we subtract 0.5 and multiply by 2</span></span><br><span class="line">    <span class="hljs-comment">// We end up with values in the range [-1, 1]</span></span><br><span class="line">    vec2 distortionPositionOffset = distortionMapValue.xy;</span><br><span class="line">    distortionPositionOffset -= vec2(<span class="hljs-number">0.5f</span>, <span class="hljs-number">0.5f</span>);</span><br><span class="line">    distortionPositionOffset *= <span class="hljs-number">2.f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// The factor scales the offset and thus controls the severity</span></span><br><span class="line">    distortionPositionOffset *= distortionFactor;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// The latter 2 channels of the texture are unused... be creative</span></span><br><span class="line">    vec2 distortionUnused = distortionMapValue.zw;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// Since we all know that hot air rises and cools,</span></span><br><span class="line">    <span class="hljs-comment">// the effect loses its severity the higher up we get</span></span><br><span class="line">    <span class="hljs-comment">// We use the t (a.k.a. y) texture coordinate of the original texture</span></span><br><span class="line">    <span class="hljs-comment">// to tell us how "high up" we are and damp accordingly</span></span><br><span class="line">    <span class="hljs-comment">// Remember, OpenGL 0 is at the bottom</span></span><br><span class="line">    distortionPositionOffset *= (<span class="hljs-number">1.f</span> - gl_TexCoord[<span class="hljs-number">0</span>].t);</span><br><span class="line"></span><br><span class="line">    vec2 distortedTextureCoordinate = gl_TexCoord[<span class="hljs-number">0</span>].st + distortionPositionOffset;</span><br><span class="line"></span><br><span class="line">    gl_FragColor = gl_Color * texture2D(currentTexture, distortedTextureCoordinate);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>SFML_Shader.cpp</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line">/*!</span><br><span class="line"> * \file    main.cpp</span><br><span class="line"> * \brief   apply a heat shader to a sprite (http://www.lucidarme.me/?p=6127)</span><br><span class="line"> * \author  Philippe Lucidarme (from https://github.com/SFML/SFML/wiki/Source:-HeatHazeShader)</span><br><span class="line"> * \version 1.0</span><br><span class="line"> * \date    12/19/2016</span><br><span class="line"> */</span><br><span class="line">#include &quot;pch.h&quot;</span><br><span class="line"> // SFML libraries</span><br><span class="line">#include &lt;SFML/Graphics.hpp&gt;</span><br><span class="line">#include &lt;SFML/System.hpp&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	// _____________________</span><br><span class="line">	// ::: Create window :::</span><br><span class="line"></span><br><span class="line">	// Create a window with the same pixel depth as the desktop</span><br><span class="line">	sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();</span><br><span class="line"></span><br><span class="line">	sf::RenderWindow window(sf::VideoMode(desktopMode.width,</span><br><span class="line">		desktopMode.height,</span><br><span class="line">		desktopMode.bitsPerPixel),</span><br><span class="line">		&quot;SFML part 5&quot;);</span><br><span class="line">//		,sf::Style::Fullscreen);</span><br><span class="line"></span><br><span class="line">	// Enable vertical sync. (vsync)</span><br><span class="line">	//window.setVerticalSyncEnabled(true);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// ____________________</span><br><span class="line">	// ::: Load texture :::</span><br><span class="line"></span><br><span class="line">	// Create texture from PNG file</span><br><span class="line">	sf::Texture texture;</span><br><span class="line">	if (!texture.loadFromFile(&quot;sfml_icon_small.png&quot;))</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; &quot;Error while loading texture&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	// Enable the smooth filter. The texture appears smoother so that pixels are less noticeable.</span><br><span class="line">	texture.setSmooth(true);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// _______________________________________</span><br><span class="line">	// ::: Create sprite and apply texture :::</span><br><span class="line"></span><br><span class="line">	// Create the sprite and apply the texture</span><br><span class="line">	sf::Sprite sprite;</span><br><span class="line">	sprite.setTexture(texture);</span><br><span class="line">	sf::FloatRect spriteSize = sprite.getGlobalBounds();</span><br><span class="line">	// Set origin in the middle of the sprite</span><br><span class="line">	sprite.setOrigin(spriteSize.width / 2., spriteSize.height / 2.);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// _______________</span><br><span class="line">	// ::: Shaders :::</span><br><span class="line"></span><br><span class="line">	// Check if shaders are available</span><br><span class="line">	if (!sf::Shader::isAvailable())</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; &quot;Shader are not available&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Load shaders</span><br><span class="line">	sf::Shader shader;</span><br><span class="line">	if (!shader.loadFromFile(&quot;shader.frag&quot;, sf::Shader::Fragment))</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; &quot;Error while shaders&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// ___________________________</span><br><span class="line">	// ::: Load distortion map :::</span><br><span class="line"></span><br><span class="line">	sf::Texture distortionMap;</span><br><span class="line"></span><br><span class="line">	if (!distortionMap.loadFromFile(&quot;distortion_map.png&quot;))</span><br><span class="line">	&#123;</span><br><span class="line">		sf::err() &lt;&lt; &quot;Error while loading distortion map&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// It is important to set repeated to true to enable scrolling upwards</span><br><span class="line">	distortionMap.setRepeated(true);</span><br><span class="line">	// Setting smooth to true lets us use small maps even on larger images</span><br><span class="line">	distortionMap.setSmooth(true);</span><br><span class="line"></span><br><span class="line">	// Set texture to the shader</span><br><span class="line">	shader.setParameter(&quot;currentTexture&quot;, sf::Shader::CurrentTexture);</span><br><span class="line">	shader.setParameter(&quot;distortionMapTexture&quot;, distortionMap);</span><br><span class="line"></span><br><span class="line">	// Shader parameters</span><br><span class="line">	float distortionFactor = .05f;</span><br><span class="line">	float riseFactor = .2f;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// _________________</span><br><span class="line">	// ::: Main loop :::</span><br><span class="line"></span><br><span class="line">	sf::Clock timer;</span><br><span class="line">	while (window.isOpen())</span><br><span class="line">	&#123;</span><br><span class="line">		// Process events</span><br><span class="line">		sf::Event event;</span><br><span class="line">		while (window.pollEvent(event))</span><br><span class="line">		&#123;</span><br><span class="line">			// Close the window if a key is pressed or if requested</span><br><span class="line">			if (event.type == sf::Event::Closed) window.close();</span><br><span class="line"></span><br><span class="line">			// If a key is pressed</span><br><span class="line">			if (event.type == sf::Event::KeyPressed)</span><br><span class="line">			&#123;</span><br><span class="line">				switch (event.key.code)</span><br><span class="line">				&#123;</span><br><span class="line">					// If escape is pressed, close the application</span><br><span class="line">				case  sf::Keyboard::Escape: window.close(); break;</span><br><span class="line"></span><br><span class="line">					// Process the up, down, left and right keys to modify parameters</span><br><span class="line">				case sf::Keyboard::Up:     distortionFactor *= 2.f;    break;</span><br><span class="line">				case sf::Keyboard::Down:    distortionFactor /= 2.f;    break;</span><br><span class="line">				case sf::Keyboard::Left:    riseFactor *= 2.f;          break;</span><br><span class="line">				case sf::Keyboard::Right:   riseFactor /= 2.f;          break;</span><br><span class="line">				default: break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// Set shader parameters</span><br><span class="line">		shader.setParameter(&quot;time&quot;, timer.getElapsedTime().asSeconds());</span><br><span class="line">		shader.setParameter(&quot;distortionFactor&quot;, distortionFactor);</span><br><span class="line">		shader.setParameter(&quot;riseFactor&quot;, riseFactor);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		// Clear the window and apply grey background</span><br><span class="line">		window.clear(sf::Color(127, 127, 127));</span><br><span class="line"></span><br><span class="line">		// Draw the sprite and apply shader</span><br><span class="line">		sprite.setPosition(window.getSize().x / 2., window.getSize().y / 2.);</span><br><span class="line">		sprite.setScale(2, 2);</span><br><span class="line">		window.draw(sprite, &amp;shader);</span><br><span class="line"></span><br><span class="line">		// Update display and wait for vsync</span><br><span class="line">		window.display();</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>最终效果图</strong></p>
+<p><img src="http://q0he94stf.bkt.clouddn.com/sfml_shader.gif" alt></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p> <a href="https://www.sfml-dev.org/tutorials/2.5/" target="_blank" rel="noopener"><code>sfml官方教程/文档</code></a></p>
+<p><a href="https://www.lucidarme.me/sfml-tutorial/" target="_blank" rel="noopener"><code>国外某大神sfml教程</code></a></p>
+
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="http://q0he94stf.bkt.clouddn.com/zfb.JPG" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="http://q0he94stf.bkt.clouddn.com/wx.JPG" alt="微信"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
+    <span class="icon is-small">
+        <i class="fab fa-paypal"></i>
+    </span>
+    <span>Paypal</span>
+</a>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="parz1zhou@outlook.com" />
+    <input type="hidden" name="currency_code" value="USD" />
+</form>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/05/hello-world/">
+                <span class="level-item">Initial hexo</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.jpg" alt="parz1">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        parz1
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Gamer&amp;Coder
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/parz1" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/parz1">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Instagram" href="https://www.instagram.com/_parz1/">
+                
+                <i class="fab fa-instagram"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/ivo2resistcamp">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#sf-Shader">
+        <span class="has-mr-6">1</span>
+        <span>sf::Shader</span>
+        </a></li><li>
+        <a class="is-flex" href="#Shader-vert-frag">
+        <span class="has-mr-6">2</span>
+        <span>Shader.vert/.frag</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考链接">
+        <span class="has-mr-6">3</span>
+        <span>参考链接</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/06/sfml_shader/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/2.png" alt="SFML引入shader/Import shaders(SFML)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-06T13:57:36.000Z">2019-11-06</time></div>
+                    <a href="/2019/11/06/sfml_shader/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SFML引入shader/Import shaders(SFML)</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/05/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Initial hexo">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T12:43:15.320Z">2019-11-05</time></div>
+                    <a href="/2019/11/05/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Initial hexo</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/06/sfml_shader/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/gallery/thumbnails/2.png" alt="SFML引入shader/Import shaders(SFML)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-06T13:57:36.000Z">2019-11-06</time></div>
+                    <a href="/2019/11/06/sfml_shader/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SFML引入shader/Import shaders(SFML)</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/11/05/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Initial hexo">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T12:43:15.320Z">2019-11-05</time></div>
+                    <a href="/2019/11/05/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Initial hexo</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="SFML引入shader/Import shaders(SFML)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;" target="_blank" rel="noopener">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
