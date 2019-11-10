@@ -10,16 +10,16 @@
 <title>SFML引入shader/Import shaders(SFML) - 仮想化</title>
 
 
-    <meta name="description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader">
+    <meta name="description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader 说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料">
 <meta name="keywords" content="sfml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SFML引入shader&#x2F;Import shaders(SFML)">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;10&#x2F;sfml_shader&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader">
+<meta property="og:description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader 说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;gallery&#x2F;thumbnails&#x2F;2.png">
-<meta property="og:updated_time" content="2019-11-09T18:43:09.744Z">
+<meta property="og:updated_time" content="2019-11-10T03:20:15.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;gallery&#x2F;thumbnails&#x2F;2.png">
 
@@ -177,8 +177,8 @@
         </h1>
         <div class="content">
             <p>既然学了<em>sfml</em>这种歪门邪道的东西，就试试里面的shader</p>
-<a id="more"></a>
 <p>说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料</p>
+<a id="more"></a>
 <h3 id="sf-Shader"><a href="#sf-Shader" class="headerlink" title="sf::Shader"></a>sf::Shader</h3><p>首先还是sfml对于引入shader的官方文档：</p>
 <blockquote>
 <p>In SFML, shaders are represented by the <a href="https://www.sfml-dev.org/documentation/2.0/classsf_1_1Shader.php" target="_blank" rel="noopener"><code>sf::Shader</code></a> class. It handles both the vertex and fragment shaders: A <a href="https://www.sfml-dev.org/documentation/2.0/classsf_1_1Shader.php" target="_blank" rel="noopener"><code>sf::Shader</code></a> object is a combination of both (or only one, if the other is not provided).</p>
