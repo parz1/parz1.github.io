@@ -19,7 +19,7 @@
 <meta property="og:description" content="双十一没什么好买的，来写博客了。 裁剪算法：一般情况下用来消除制定区域内或区域外的图形部分的过程叫裁剪。二维裁剪算法有：点&#x2F;线段&#x2F;区域&#x2F;曲线&#x2F;文字的裁剪，此文介绍Cohen-Sutherland线段裁剪算法。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;q0he94stf.bkt.clouddn.com&#x2F;clipping.jpg">
-<meta property="og:updated_time" content="2019-11-11T15:40:55.549Z">
+<meta property="og:updated_time" content="2019-11-11T17:14:14.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;q0he94stf.bkt.clouddn.com&#x2F;clipping.jpg">
 
@@ -159,7 +159,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 86 个字)
+                    4 分钟 读完 (大约 575 个字)
                 </span>
                 
                 
@@ -177,6 +177,42 @@
 <a id="more"></a>
 
 
+
+<p>clear all;</p>
+<p>n = 100;<br>Xmin = -4; Xmax = 4;<br>Ymin = -3; Ymax = 3;</p>
+<p>figure; hold on;</p>
+<p>P1x = rand(1,n)<em>20 - 10;<br>P2x = rand(1,n)</em>20 - 10;<br>P1y = rand(1,n)<em>20 - 10;<br>P2y = rand(1,n)</em>20 - 10;<br>P1code = zeros(n,4);<br>P2code = zeros(n,4);</p>
+<p>for i = 1:n    </p>
+<pre><code>if P1x(i) &lt; Xmin
+    P1code(i,1) = 1;
+end
+if P1x(i) &gt; Xmax
+    P1code(i,2) = 1;
+end
+if P1y(i) &lt; Ymin
+    P1code(i,3) = 1;
+end
+if P1y(i) &gt; Ymax
+    P1code(i,4) = 1;
+end    
+
+if P2x(i) &lt; Xmin
+    P2code(i,1) = 1;
+end
+if P2x(i) &gt; Xmax
+    P2code(i,2) = 1;
+end
+if P2y(i) &lt; Ymin
+    P2code(i,3) = 1;
+end
+if P2y(i) &gt; Ymax
+    P2code(i,4) = 1;
+end
+
+plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],&apos;b-&apos;);</code></pre><p>end<br>hold off;</p>
+<p>P_label = zeros(1,n);<br>figure; hold on;<br>for i = 1:n<br>    P_or = P1code(i,1:4) | P2code(i,1:4);<br>    if sum(P_or) == 0<br>        P_label(i) = 1;<br>        plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],’r-‘);<br>    end<br>    P_and = P1code(i,1:4) &amp; P2code(i,1:4);<br>    if sum(P_and) &gt; 0<br>        P_label(i) = 2;<br>        plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],’g-‘);<br>    end<br>end<br>hold off;</p>
+<p>figure; hold on;<br>for i = 1:n<br>    if P_label(i) == 0</p>
+<figure class="highlight matlab hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    P_or = P1code(<span class="hljs-built_in">i</span>,<span class="hljs-number">1</span>:<span class="hljs-number">4</span>) | P2code(<span class="hljs-built_in">i</span>,<span class="hljs-number">1</span>:<span class="hljs-number">4</span>);</span><br><span class="line">    <span class="hljs-built_in">plot</span>([P1x(<span class="hljs-built_in">i</span>),P2x(<span class="hljs-built_in">i</span>)],[P1y(<span class="hljs-built_in">i</span>),P2y(<span class="hljs-built_in">i</span>)],<span class="hljs-string">'g-'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">1</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Py = P1y(<span class="hljs-built_in">i</span>) + (Xmin-P1x(<span class="hljs-built_in">i</span>))*(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))/(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &lt; Xmin</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Xmin; P1y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2x(<span class="hljs-built_in">i</span>) &lt; Xmin</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Xmin; P2y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">2</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Py = P1y(<span class="hljs-built_in">i</span>) + (Xmax-P1x(<span class="hljs-built_in">i</span>))*(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))/(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &gt; Xmax</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Xmax; P1y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2x(<span class="hljs-built_in">i</span>) &gt; Xmax</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Xmax; P2y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">3</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Px = P1x(<span class="hljs-built_in">i</span>) + (Ymin-P1y(<span class="hljs-built_in">i</span>))/(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))*(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1y(<span class="hljs-built_in">i</span>) &lt; Ymin</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Px; P1y(<span class="hljs-built_in">i</span>) = Ymin;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2y(<span class="hljs-built_in">i</span>) &lt; Ymin</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Px; P2y(<span class="hljs-built_in">i</span>) = Ymin;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">4</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Px = P1x(<span class="hljs-built_in">i</span>) + (Ymax-P1y(<span class="hljs-built_in">i</span>))/(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))*(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1y(<span class="hljs-built_in">i</span>) &gt; Ymax</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Px; P1y(<span class="hljs-built_in">i</span>) = Ymax;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2y(<span class="hljs-built_in">i</span>) &gt; Ymax</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Px; P2y(<span class="hljs-built_in">i</span>) = Ymax;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &gt;= Xmin &amp; P1x(<span class="hljs-built_in">i</span>) &lt;= Xmax &amp; ...</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) &gt;= Xmin &amp; P2x(<span class="hljs-built_in">i</span>) &lt;= Xmax &amp; ...</span><br><span class="line">            P1y(<span class="hljs-built_in">i</span>) &gt;= Ymin &amp; P1y(<span class="hljs-built_in">i</span>) &lt;= Ymax &amp; ...</span><br><span class="line">            P2y(<span class="hljs-built_in">i</span>) &gt;= Ymin &amp; P2y(<span class="hljs-built_in">i</span>) &lt;= Ymax</span><br><span class="line">        <span class="hljs-built_in">plot</span>([P1x(<span class="hljs-built_in">i</span>),P2x(<span class="hljs-built_in">i</span>)],[P1y(<span class="hljs-built_in">i</span>),P2y(<span class="hljs-built_in">i</span>)],<span class="hljs-string">'m-'</span>,<span class="hljs-string">'LineWidth'</span>,<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-built_in">plot</span>([<span class="hljs-number">-4</span> <span class="hljs-number">4</span> <span class="hljs-number">4</span> <span class="hljs-number">-4</span> <span class="hljs-number">-4</span>],[<span class="hljs-number">-3</span> <span class="hljs-number">-3</span> <span class="hljs-number">3</span> <span class="hljs-number">3</span> <span class="hljs-number">-3</span>],<span class="hljs-string">'b-'</span>,<span class="hljs-string">'LineWidth'</span>,<span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-keyword">end</span></span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
