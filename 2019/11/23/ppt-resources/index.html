@@ -8,21 +8,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Cohen-Sutherland 线段裁剪算法 - 仮想化</title>
+<title>PowerPoint Resource - 仮想化</title>
 
 
-    <meta name="description" content="双十一没什么好买的，来写博客了。 裁剪算法：一般情况下用来消除制定区域内或区域外的图形部分的过程叫裁剪。二维裁剪算法有：点&#x2F;线段&#x2F;区域&#x2F;曲线&#x2F;文字的裁剪，此文介绍Cohen-Sutherland线段裁剪算法。">
-<meta name="keywords" content="ComputerGrapics,二维观察,裁剪算法">
+    <meta name="description" content="此文分享PPT的一些资源">
+<meta name="keywords" content="PowerPoint">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cohen-Sutherland 线段裁剪算法">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;grapics-clipping&#x2F;index.html">
+<meta property="og:title" content="PowerPoint Resource">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;2019&#x2F;11&#x2F;23&#x2F;ppt-resources&#x2F;index.html">
 <meta property="og:site_name" content="Imagination">
-<meta property="og:description" content="双十一没什么好买的，来写博客了。 裁剪算法：一般情况下用来消除制定区域内或区域外的图形部分的过程叫裁剪。二维裁剪算法有：点&#x2F;线段&#x2F;区域&#x2F;曲线&#x2F;文字的裁剪，此文介绍Cohen-Sutherland线段裁剪算法。">
+<meta property="og:description" content="此文分享PPT的一些资源">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;q0he94stf.bkt.clouddn.com&#x2F;clipping.jpg">
-<meta property="og:updated_time" content="2019-11-23T17:42:21.428Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2019-11-23T18:58:10.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;q0he94stf.bkt.clouddn.com&#x2F;clipping.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
 
 
 
@@ -88,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Cohen-Sutherland 线段裁剪算法" height="28">
+                <img src="/images/logo.png" alt="PowerPoint Resource" height="28">
             
             </a>
         </div>
@@ -124,6 +124,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
                     <i class="fas fa-search"></i>
@@ -140,23 +144,21 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="http://q0he94stf.bkt.clouddn.com/clipping.jpg" alt="Cohen-Sutherland 线段裁剪算法">
-        </span>
-    </div>
-    
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-11T10:51:34.000Z">2019-11-11</time>
+                <time class="level-item has-text-grey" datetime="2019-11-23T15:14:25.000Z">2019-11-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Office/">Office</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 575 个字)
+                    3 分钟 读完 (大约 425 个字)
                 </span>
                 
                 
@@ -165,59 +167,44 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Cohen-Sutherland 线段裁剪算法
+                PowerPoint Resource
             
         </h1>
         <div class="content">
-            <p>双十一没什么好买的，来写博客了。</p>
-<p>裁剪算法：一般情况下用来消除制定区域内或区域外的图形部分的过程叫裁剪。二维裁剪算法有：点/线段/区域/曲线/文字的裁剪，此文介绍Cohen-Sutherland线段裁剪算法。</p>
+            <p>此文分享PPT的一些资源</p>
 <a id="more"></a>
 
-
-
-
-<p>clear all;</p>
-<p>n = 100;<br>Xmin = -4; Xmax = 4;<br>Ymin = -3; Ymax = 3;</p>
-<p>figure; hold on;</p>
-<p>P1x = rand(1,n)<em>20 - 10;<br>P2x = rand(1,n)</em>20 - 10;<br>P1y = rand(1,n)<em>20 - 10;<br>P2y = rand(1,n)</em>20 - 10;<br>P1code = zeros(n,4);<br>P2code = zeros(n,4);</p>
-<p>for i = 1:n    </p>
-<pre><code>if P1x(i) &lt; Xmin
-    P1code(i,1) = 1;
-end
-if P1x(i) &gt; Xmax
-    P1code(i,2) = 1;
-end
-if P1y(i) &lt; Ymin
-    P1code(i,3) = 1;
-end
-if P1y(i) &gt; Ymax
-    P1code(i,4) = 1;
-end    
-
-if P2x(i) &lt; Xmin
-    P2code(i,1) = 1;
-end
-if P2x(i) &gt; Xmax
-    P2code(i,2) = 1;
-end
-if P2y(i) &lt; Ymin
-    P2code(i,3) = 1;
-end
-if P2y(i) &gt; Ymax
-    P2code(i,4) = 1;
-end
-
-plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],&apos;b-&apos;);</code></pre><p>end<br>hold off;</p>
-<p>P_label = zeros(1,n);<br>figure; hold on;<br>for i = 1:n<br>    P_or = P1code(i,1:4) | P2code(i,1:4);<br>    if sum(P_or) == 0<br>        P_label(i) = 1;<br>        plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],’r-‘);<br>    end<br>    P_and = P1code(i,1:4) &amp; P2code(i,1:4);<br>    if sum(P_and) &gt; 0<br>        P_label(i) = 2;<br>        plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],’g-‘);<br>    end<br>end<br>hold off;</p>
-<p>figure; hold on;<br>for i = 1:n<br>    if P_label(i) == 0</p>
-<figure class="highlight matlab hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    P_or = P1code(<span class="hljs-built_in">i</span>,<span class="hljs-number">1</span>:<span class="hljs-number">4</span>) | P2code(<span class="hljs-built_in">i</span>,<span class="hljs-number">1</span>:<span class="hljs-number">4</span>);</span><br><span class="line">    <span class="hljs-built_in">plot</span>([P1x(<span class="hljs-built_in">i</span>),P2x(<span class="hljs-built_in">i</span>)],[P1y(<span class="hljs-built_in">i</span>),P2y(<span class="hljs-built_in">i</span>)],<span class="hljs-string">'g-'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">1</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Py = P1y(<span class="hljs-built_in">i</span>) + (Xmin-P1x(<span class="hljs-built_in">i</span>))*(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))/(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &lt; Xmin</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Xmin; P1y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2x(<span class="hljs-built_in">i</span>) &lt; Xmin</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Xmin; P2y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">2</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Py = P1y(<span class="hljs-built_in">i</span>) + (Xmax-P1x(<span class="hljs-built_in">i</span>))*(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))/(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &gt; Xmax</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Xmax; P1y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2x(<span class="hljs-built_in">i</span>) &gt; Xmax</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Xmax; P2y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">3</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Px = P1x(<span class="hljs-built_in">i</span>) + (Ymin-P1y(<span class="hljs-built_in">i</span>))/(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))*(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1y(<span class="hljs-built_in">i</span>) &lt; Ymin</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Px; P1y(<span class="hljs-built_in">i</span>) = Ymin;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2y(<span class="hljs-built_in">i</span>) &lt; Ymin</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Px; P2y(<span class="hljs-built_in">i</span>) = Ymin;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">4</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Px = P1x(<span class="hljs-built_in">i</span>) + (Ymax-P1y(<span class="hljs-built_in">i</span>))/(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))*(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1y(<span class="hljs-built_in">i</span>) &gt; Ymax</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Px; P1y(<span class="hljs-built_in">i</span>) = Ymax;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2y(<span class="hljs-built_in">i</span>) &gt; Ymax</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Px; P2y(<span class="hljs-built_in">i</span>) = Ymax;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &gt;= Xmin &amp; P1x(<span class="hljs-built_in">i</span>) &lt;= Xmax &amp; ...</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) &gt;= Xmin &amp; P2x(<span class="hljs-built_in">i</span>) &lt;= Xmax &amp; ...</span><br><span class="line">            P1y(<span class="hljs-built_in">i</span>) &gt;= Ymin &amp; P1y(<span class="hljs-built_in">i</span>) &lt;= Ymax &amp; ...</span><br><span class="line">            P2y(<span class="hljs-built_in">i</span>) &gt;= Ymin &amp; P2y(<span class="hljs-built_in">i</span>) &lt;= Ymax</span><br><span class="line">        <span class="hljs-built_in">plot</span>([P1x(<span class="hljs-built_in">i</span>),P2x(<span class="hljs-built_in">i</span>)],[P1y(<span class="hljs-built_in">i</span>),P2y(<span class="hljs-built_in">i</span>)],<span class="hljs-string">'m-'</span>,<span class="hljs-string">'LineWidth'</span>,<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-built_in">plot</span>([<span class="hljs-number">-4</span> <span class="hljs-number">4</span> <span class="hljs-number">4</span> <span class="hljs-number">-4</span> <span class="hljs-number">-4</span>],[<span class="hljs-number">-3</span> <span class="hljs-number">-3</span> <span class="hljs-number">3</span> <span class="hljs-number">3</span> <span class="hljs-number">-3</span>],<span class="hljs-string">'b-'</span>,<span class="hljs-string">'LineWidth'</span>,<span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h2><h3 id="取色工具"><a href="#取色工具" class="headerlink" title="取色工具"></a>取色工具</h3><p><a href="https://www.zhinin.com/drop-mac.html" target="_blank" rel="noopener">drop</a> - mac</p>
+<p>没用过，赵小姐推荐</p>
+<p><a href="https://www.onlinedown.net/soft/39923.htm" target="_blank" rel="noopener">TakeColor</a> - windows</p>
+<p>0.22mb轻量级，很好用，本人极荐</p>
+<h3 id="iSlide-排版"><a href="#iSlide-排版" class="headerlink" title="iSlide 排版"></a>iSlide 排版</h3><p>这是一款全能型的插件，主要的出彩点在于排版色彩和它海量的模板。</p>
+<p><img src="http://q0he94stf.bkt.clouddn.com/islide.png" alt></p>
+<p><a href="https://www.islide.cc/" target="_blank" rel="noopener">下载链接</a></p>
+<h3 id="PA动画"><a href="#PA动画" class="headerlink" title="PA动画"></a>PA动画</h3><p>专门针对动画的一款PPT插件，但目前69包年，有余裕的自己购买。</p>
+<p><a href="http://www.papocket.com/" target="_blank" rel="noopener">下载链接</a></p>
+<h3 id="Think-cell"><a href="#Think-cell" class="headerlink" title="Think-cell"></a>Think-cell</h3><p>制作图表的一款插件，制作工作汇报年度总结的时候，它可能会帮你很多</p>
+<p><img src="http://q0he94stf.bkt.clouddn.com/thinkcell.png" alt></p>
+<p><a href="https://www.think-cell.com/en/" target="_blank" rel="noopener">下载链接</a></p>
+<h3 id="犸良"><a href="#犸良" class="headerlink" title="犸良"></a><a href="https://design.alipay.com/emotion" target="_blank" rel="noopener">犸良</a></h3><p>阿里出品的在线动效制作工具</p>
+<p><img src="http://q0he94stf.bkt.clouddn.com/maliang.png" alt></p>
+<h3 id="ispring"><a href="#ispring" class="headerlink" title="ispring"></a><a href="https://www.cr173.com/soft/14704.html" target="_blank" rel="noopener">ispring</a></h3><p>PPT由于可能到各种地方去运行，可能会遇到环境不兼容无法运行的情况。此插件可将ppt保存为Flash格式，避免此情况。</p>
+<h3 id="Aigei"><a href="#Aigei" class="headerlink" title="Aigei"></a><a href="http://www.aigei.com/" target="_blank" rel="noopener">Aigei</a></h3><p>音效网站</p>
+<h2 id="资源篇"><a href="#资源篇" class="headerlink" title="资源篇"></a>资源篇</h2><h3 id="OfficePLUS"><a href="#OfficePLUS" class="headerlink" title="OfficePLUS"></a><a href="http://www.officeplus.cn/Template/Home.shtml" target="_blank" rel="noopener">OfficePLUS</a></h3><p>官方模板库</p>
+<h3 id="Iconfont矢量图标库"><a href="#Iconfont矢量图标库" class="headerlink" title="Iconfont矢量图标库"></a><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">Iconfont矢量图标库</a></h3><p>阿里巴巴的图标矢量库，海量icon总有你想要的</p>
+<h3 id="Color-Hunt"><a href="#Color-Hunt" class="headerlink" title="Color Hunt"></a><a href="https://colorhunt.co/" target="_blank" rel="noopener">Color Hunt</a></h3><p>配色网站</p>
+<h3 id="Nippon-color"><a href="#Nippon-color" class="headerlink" title="Nippon color"></a>Nippon color</h3><p>日式颜色名，文艺又中二的人可来这找想要的颜色</p>
+<p>可能需要科学上网</p>
+<p><a href="http://www.nipponcolors.com/" target="_blank" rel="noopener">nipponcolors.com</a></p>
+<h3 id="Dribble"><a href="#Dribble" class="headerlink" title="Dribble"></a><a href="https://dribbble.com/" target="_blank" rel="noopener">Dribble</a></h3><p>这个不用说了，我的UI参考都是从这来的</p>
+<h3 id="Unsplash"><a href="#Unsplash" class="headerlink" title="Unsplash"></a><a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a></h3><h3 id="Behance-追求设计感"><a href="#Behance-追求设计感" class="headerlink" title="Behance 追求设计感"></a><a href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a> 追求设计感</h3>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/ComputerGrapics/" rel="tag">ComputerGrapics</a>, <a class="has-link-grey -link" href="/tags/%E4%BA%8C%E7%BB%B4%E8%A7%82%E5%AF%9F/" rel="tag">二维观察</a>, <a class="has-link-grey -link" href="/tags/%E8%A3%81%E5%89%AA%E7%AE%97%E6%B3%95/" rel="tag">裁剪算法</a>
+                    <a class="has-link-grey -link" href="/tags/PowerPoint/" rel="tag">PowerPoint</a>
                 </div>
             </div>
         </div>
@@ -282,17 +269,10 @@ plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],&apos;b-&apos;);</code></pre><p>end<br>hold
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/14/fe-screen/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">前端各种分辨率测试工具Resolution Test</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/10/sfml_shader/">
-                <span class="level-item">SFML引入shader/Import shaders(SFML)</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/14/fe-screen/">
+                <span class="level-item">前端各种分辨率测试工具Resolution Test</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -435,6 +415,82 @@ plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],&apos;b-&apos;);</code></pre><p>end<br>hold
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#工具篇">
+        <span class="has-mr-6">1</span>
+        <span>工具篇</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#取色工具">
+        <span class="has-mr-6">1.1</span>
+        <span>取色工具</span>
+        </a></li><li>
+        <a class="is-flex" href="#iSlide-排版">
+        <span class="has-mr-6">1.2</span>
+        <span>iSlide 排版</span>
+        </a></li><li>
+        <a class="is-flex" href="#PA动画">
+        <span class="has-mr-6">1.3</span>
+        <span>PA动画</span>
+        </a></li><li>
+        <a class="is-flex" href="#Think-cell">
+        <span class="has-mr-6">1.4</span>
+        <span>Think-cell</span>
+        </a></li><li>
+        <a class="is-flex" href="#犸良">
+        <span class="has-mr-6">1.5</span>
+        <span>犸良</span>
+        </a></li><li>
+        <a class="is-flex" href="#ispring">
+        <span class="has-mr-6">1.6</span>
+        <span>ispring</span>
+        </a></li><li>
+        <a class="is-flex" href="#Aigei">
+        <span class="has-mr-6">1.7</span>
+        <span>Aigei</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#资源篇">
+        <span class="has-mr-6">2</span>
+        <span>资源篇</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#OfficePLUS">
+        <span class="has-mr-6">2.1</span>
+        <span>OfficePLUS</span>
+        </a></li><li>
+        <a class="is-flex" href="#Iconfont矢量图标库">
+        <span class="has-mr-6">2.2</span>
+        <span>Iconfont矢量图标库</span>
+        </a></li><li>
+        <a class="is-flex" href="#Color-Hunt">
+        <span class="has-mr-6">2.3</span>
+        <span>Color Hunt</span>
+        </a></li><li>
+        <a class="is-flex" href="#Nippon-color">
+        <span class="has-mr-6">2.4</span>
+        <span>Nippon color</span>
+        </a></li><li>
+        <a class="is-flex" href="#Dribble">
+        <span class="has-mr-6">2.5</span>
+        <span>Dribble</span>
+        </a></li><li>
+        <a class="is-flex" href="#Unsplash">
+        <span class="has-mr-6">2.6</span>
+        <span>Unsplash</span>
+        </a></li><li>
+        <a class="is-flex" href="#Behance-追求设计感">
+        <span class="has-mr-6">2.7</span>
+        <span>Behance 追求设计感</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -911,7 +967,7 @@ plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],&apos;b-&apos;);</code></pre><p>end<br>hold
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Cohen-Sutherland 线段裁剪算法" height="28">
+                    <img src="/images/logo.png" alt="PowerPoint Resource" height="28">
                 
                 </a>
                 <p class="is-size-7">

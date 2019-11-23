@@ -8,21 +8,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Cohen-Sutherland 线段裁剪算法 - 仮想化</title>
+<title>分类: Office - 仮想化</title>
 
 
-    <meta name="description" content="双十一没什么好买的，来写博客了。 裁剪算法：一般情况下用来消除制定区域内或区域外的图形部分的过程叫裁剪。二维裁剪算法有：点&#x2F;线段&#x2F;区域&#x2F;曲线&#x2F;文字的裁剪，此文介绍Cohen-Sutherland线段裁剪算法。">
-<meta name="keywords" content="ComputerGrapics,二维观察,裁剪算法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Cohen-Sutherland 线段裁剪算法">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;grapics-clipping&#x2F;index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Imagination">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;categories&#x2F;Office&#x2F;index.html">
 <meta property="og:site_name" content="Imagination">
-<meta property="og:description" content="双十一没什么好买的，来写博客了。 裁剪算法：一般情况下用来消除制定区域内或区域外的图形部分的过程叫裁剪。二维裁剪算法有：点&#x2F;线段&#x2F;区域&#x2F;曲线&#x2F;文字的裁剪，此文介绍Cohen-Sutherland线段裁剪算法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;q0he94stf.bkt.clouddn.com&#x2F;clipping.jpg">
-<meta property="og:updated_time" content="2019-11-23T17:42:21.428Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;q0he94stf.bkt.clouddn.com&#x2F;clipping.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
 
 
 
@@ -88,7 +84,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Cohen-Sutherland 线段裁剪算法" height="28">
+                <img src="/images/logo.png" alt="仮想化" height="28">
             
             </a>
         </div>
@@ -137,26 +133,36 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="http://q0he94stf.bkt.clouddn.com/clipping.jpg" alt="Cohen-Sutherland 线段裁剪算法">
-        </span>
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">Office</a></li>
+        </ul>
+        </nav>
     </div>
+</div>
+
+    
+<div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-11T10:51:34.000Z">2019-11-11</time>
+                <time class="level-item has-text-grey" datetime="2019-11-23T15:14:25.000Z">2019-11-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Office/">Office</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 575 个字)
+                    3 分钟 读完 (大约 425 个字)
                 </span>
                 
                 
@@ -165,163 +171,33 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Cohen-Sutherland 线段裁剪算法
+                <a class="has-link-black-ter" href="/2019/11/23/ppt-resources/">PowerPoint Resource</a>
             
         </h1>
         <div class="content">
-            <p>双十一没什么好买的，来写博客了。</p>
-<p>裁剪算法：一般情况下用来消除制定区域内或区域外的图形部分的过程叫裁剪。二维裁剪算法有：点/线段/区域/曲线/文字的裁剪，此文介绍Cohen-Sutherland线段裁剪算法。</p>
-<a id="more"></a>
-
-
-
-
-<p>clear all;</p>
-<p>n = 100;<br>Xmin = -4; Xmax = 4;<br>Ymin = -3; Ymax = 3;</p>
-<p>figure; hold on;</p>
-<p>P1x = rand(1,n)<em>20 - 10;<br>P2x = rand(1,n)</em>20 - 10;<br>P1y = rand(1,n)<em>20 - 10;<br>P2y = rand(1,n)</em>20 - 10;<br>P1code = zeros(n,4);<br>P2code = zeros(n,4);</p>
-<p>for i = 1:n    </p>
-<pre><code>if P1x(i) &lt; Xmin
-    P1code(i,1) = 1;
-end
-if P1x(i) &gt; Xmax
-    P1code(i,2) = 1;
-end
-if P1y(i) &lt; Ymin
-    P1code(i,3) = 1;
-end
-if P1y(i) &gt; Ymax
-    P1code(i,4) = 1;
-end    
-
-if P2x(i) &lt; Xmin
-    P2code(i,1) = 1;
-end
-if P2x(i) &gt; Xmax
-    P2code(i,2) = 1;
-end
-if P2y(i) &lt; Ymin
-    P2code(i,3) = 1;
-end
-if P2y(i) &gt; Ymax
-    P2code(i,4) = 1;
-end
-
-plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],&apos;b-&apos;);</code></pre><p>end<br>hold off;</p>
-<p>P_label = zeros(1,n);<br>figure; hold on;<br>for i = 1:n<br>    P_or = P1code(i,1:4) | P2code(i,1:4);<br>    if sum(P_or) == 0<br>        P_label(i) = 1;<br>        plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],’r-‘);<br>    end<br>    P_and = P1code(i,1:4) &amp; P2code(i,1:4);<br>    if sum(P_and) &gt; 0<br>        P_label(i) = 2;<br>        plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],’g-‘);<br>    end<br>end<br>hold off;</p>
-<p>figure; hold on;<br>for i = 1:n<br>    if P_label(i) == 0</p>
-<figure class="highlight matlab hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    P_or = P1code(<span class="hljs-built_in">i</span>,<span class="hljs-number">1</span>:<span class="hljs-number">4</span>) | P2code(<span class="hljs-built_in">i</span>,<span class="hljs-number">1</span>:<span class="hljs-number">4</span>);</span><br><span class="line">    <span class="hljs-built_in">plot</span>([P1x(<span class="hljs-built_in">i</span>),P2x(<span class="hljs-built_in">i</span>)],[P1y(<span class="hljs-built_in">i</span>),P2y(<span class="hljs-built_in">i</span>)],<span class="hljs-string">'g-'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">1</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Py = P1y(<span class="hljs-built_in">i</span>) + (Xmin-P1x(<span class="hljs-built_in">i</span>))*(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))/(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &lt; Xmin</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Xmin; P1y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2x(<span class="hljs-built_in">i</span>) &lt; Xmin</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Xmin; P2y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">2</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Py = P1y(<span class="hljs-built_in">i</span>) + (Xmax-P1x(<span class="hljs-built_in">i</span>))*(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))/(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &gt; Xmax</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Xmax; P1y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2x(<span class="hljs-built_in">i</span>) &gt; Xmax</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Xmax; P2y(<span class="hljs-built_in">i</span>) = Py;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">3</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Px = P1x(<span class="hljs-built_in">i</span>) + (Ymin-P1y(<span class="hljs-built_in">i</span>))/(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))*(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1y(<span class="hljs-built_in">i</span>) &lt; Ymin</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Px; P1y(<span class="hljs-built_in">i</span>) = Ymin;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2y(<span class="hljs-built_in">i</span>) &lt; Ymin</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Px; P2y(<span class="hljs-built_in">i</span>) = Ymin;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> P_or(<span class="hljs-number">4</span>) == <span class="hljs-number">1</span></span><br><span class="line">        Px = P1x(<span class="hljs-built_in">i</span>) + (Ymax-P1y(<span class="hljs-built_in">i</span>))/(P2y(<span class="hljs-built_in">i</span>)-P1y(<span class="hljs-built_in">i</span>))*(P2x(<span class="hljs-built_in">i</span>)-P1x(<span class="hljs-built_in">i</span>));</span><br><span class="line">        <span class="hljs-keyword">if</span> P1y(<span class="hljs-built_in">i</span>) &gt; Ymax</span><br><span class="line">            P1x(<span class="hljs-built_in">i</span>) = Px; P1y(<span class="hljs-built_in">i</span>) = Ymax;</span><br><span class="line">        <span class="hljs-keyword">elseif</span> P2y(<span class="hljs-built_in">i</span>) &gt; Ymax</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) = Px; P2y(<span class="hljs-built_in">i</span>) = Ymax;</span><br><span class="line">        <span class="hljs-keyword">end</span>            </span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-keyword">if</span> P1x(<span class="hljs-built_in">i</span>) &gt;= Xmin &amp; P1x(<span class="hljs-built_in">i</span>) &lt;= Xmax &amp; ...</span><br><span class="line">            P2x(<span class="hljs-built_in">i</span>) &gt;= Xmin &amp; P2x(<span class="hljs-built_in">i</span>) &lt;= Xmax &amp; ...</span><br><span class="line">            P1y(<span class="hljs-built_in">i</span>) &gt;= Ymin &amp; P1y(<span class="hljs-built_in">i</span>) &lt;= Ymax &amp; ...</span><br><span class="line">            P2y(<span class="hljs-built_in">i</span>) &gt;= Ymin &amp; P2y(<span class="hljs-built_in">i</span>) &lt;= Ymax</span><br><span class="line">        <span class="hljs-built_in">plot</span>([P1x(<span class="hljs-built_in">i</span>),P2x(<span class="hljs-built_in">i</span>)],[P1y(<span class="hljs-built_in">i</span>),P2y(<span class="hljs-built_in">i</span>)],<span class="hljs-string">'m-'</span>,<span class="hljs-string">'LineWidth'</span>,<span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">end</span></span><br><span class="line">    <span class="hljs-built_in">plot</span>([<span class="hljs-number">-4</span> <span class="hljs-number">4</span> <span class="hljs-number">4</span> <span class="hljs-number">-4</span> <span class="hljs-number">-4</span>],[<span class="hljs-number">-3</span> <span class="hljs-number">-3</span> <span class="hljs-number">3</span> <span class="hljs-number">3</span> <span class="hljs-number">-3</span>],<span class="hljs-string">'b-'</span>,<span class="hljs-string">'LineWidth'</span>,<span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-keyword">end</span></span><br></pre></td></tr></table></figure>
+            <p>此文分享PPT的一些资源</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/ComputerGrapics/" rel="tag">ComputerGrapics</a>, <a class="has-link-grey -link" href="/tags/%E4%BA%8C%E7%BB%B4%E8%A7%82%E5%AF%9F/" rel="tag">二维观察</a>, <a class="has-link-grey -link" href="/tags/%E8%A3%81%E5%89%AA%E7%AE%97%E6%B3%95/" rel="tag">裁剪算法</a>
+                <a class="button is-size-7 is-light" href="/2019/11/23/ppt-resources/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="http://q0he94stf.bkt.clouddn.com/zfb.JPG" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="http://q0he94stf.bkt.clouddn.com/wx.JPG" alt="微信"></div>
-</a>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
-    <span class="icon is-small">
-        <i class="fab fa-paypal"></i>
-    </span>
-    <span>Paypal</span>
-</a>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
-    <input type="hidden" name="cmd" value="_donations" />
-    <input type="hidden" name="business" value="parz1zhou@outlook.com" />
-    <input type="hidden" name="currency_code" value="USD" />
-</form>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/14/fe-screen/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">前端各种分辨率测试工具Resolution Test</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/10/sfml_shader/">
-                <span class="level-item">SFML引入shader/Import shaders(SFML)</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'KIiHmNPqqkGWxlKyKehcAwEe-gzGzoHsz',
-        app_key: 'EIkKafCVYR9qy5GFHBuN6XKM',
-        placeholder: '开始你的论述'
-    });
-</script>
-
-    </div>
-</div>
 </div>
                 
 
@@ -911,7 +787,7 @@ plot([P1x(i),P2x(i)],[P1y(i),P2y(i)],&apos;b-&apos;);</code></pre><p>end<br>hold
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Cohen-Sutherland 线段裁剪算法" height="28">
+                    <img src="/images/logo.png" alt="仮想化" height="28">
                 
                 </a>
                 <p class="is-size-7">
