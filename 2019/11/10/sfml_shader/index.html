@@ -11,16 +11,16 @@
 <title>SFML引入shader/Import shaders(SFML) - 仮想化</title>
 
 
-    <meta name="description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader 说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料">
+    <meta name="description" content="既然学了sfml，就试试里面的shader 说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料">
 <meta name="keywords" content="sfml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SFML引入shader&#x2F;Import shaders(SFML)">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;2019&#x2F;11&#x2F;10&#x2F;sfml_shader&#x2F;index.html">
 <meta property="og:site_name" content="Imagination">
-<meta property="og:description" content="既然学了sfml这种歪门邪道的东西，就试试里面的shader 说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料">
+<meta property="og:description" content="既然学了sfml，就试试里面的shader 说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;gallery&#x2F;thumbnails&#x2F;2.png">
-<meta property="og:updated_time" content="2019-11-10T03:20:15.909Z">
+<meta property="og:updated_time" content="2019-12-19T08:05:48.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;gallery&#x2F;thumbnails&#x2F;2.png">
 
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1203 个字)
+                    8 分钟 读完 (大约 1189 个字)
                 </span>
                 
                 
@@ -177,7 +177,7 @@
             
         </h1>
         <div class="content">
-            <p>既然学了<em>sfml</em>这种歪门邪道的东西，就试试里面的shader</p>
+            <p>既然学了<em>sfml</em>，就试试里面的shader</p>
 <p>说实在并不是很清楚shader的GLSL语法是怎么写的，但是既然是类C语言，就不怕读不了源码，于是去google找了相关资料</p>
 <a id="more"></a>
 <h3 id="sf-Shader"><a href="#sf-Shader" class="headerlink" title="sf::Shader"></a>sf::Shader</h3><p>首先还是sfml对于引入shader的官方文档：</p>
@@ -209,9 +209,10 @@
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line">/*!</span><br><span class="line"> * \file    main.cpp</span><br><span class="line"> * \brief   apply a heat shader to a sprite (http://www.lucidarme.me/?p=6127)</span><br><span class="line"> * \author  Philippe Lucidarme (from https://github.com/SFML/SFML/wiki/Source:-HeatHazeShader)</span><br><span class="line"> * \version 1.0</span><br><span class="line"> * \date    12/19/2016</span><br><span class="line"> */</span><br><span class="line">#include &quot;pch.h&quot;</span><br><span class="line"> // SFML libraries</span><br><span class="line">#include &lt;SFML/Graphics.hpp&gt;</span><br><span class="line">#include &lt;SFML/System.hpp&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	// _____________________</span><br><span class="line">	// ::: Create window :::</span><br><span class="line"></span><br><span class="line">	// Create a window with the same pixel depth as the desktop</span><br><span class="line">	sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();</span><br><span class="line"></span><br><span class="line">	sf::RenderWindow window(sf::VideoMode(desktopMode.width,</span><br><span class="line">		desktopMode.height,</span><br><span class="line">		desktopMode.bitsPerPixel),</span><br><span class="line">		&quot;SFML part 5&quot;);</span><br><span class="line">//		,sf::Style::Fullscreen);</span><br><span class="line"></span><br><span class="line">	// Enable vertical sync. (vsync)</span><br><span class="line">	//window.setVerticalSyncEnabled(true);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// ____________________</span><br><span class="line">	// ::: Load texture :::</span><br><span class="line"></span><br><span class="line">	// Create texture from PNG file</span><br><span class="line">	sf::Texture texture;</span><br><span class="line">	if (!texture.loadFromFile(&quot;sfml_icon_small.png&quot;))</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; &quot;Error while loading texture&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	// Enable the smooth filter. The texture appears smoother so that pixels are less noticeable.</span><br><span class="line">	texture.setSmooth(true);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// _______________________________________</span><br><span class="line">	// ::: Create sprite and apply texture :::</span><br><span class="line"></span><br><span class="line">	// Create the sprite and apply the texture</span><br><span class="line">	sf::Sprite sprite;</span><br><span class="line">	sprite.setTexture(texture);</span><br><span class="line">	sf::FloatRect spriteSize = sprite.getGlobalBounds();</span><br><span class="line">	// Set origin in the middle of the sprite</span><br><span class="line">	sprite.setOrigin(spriteSize.width / 2., spriteSize.height / 2.);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// _______________</span><br><span class="line">	// ::: Shaders :::</span><br><span class="line"></span><br><span class="line">	// Check if shaders are available</span><br><span class="line">	if (!sf::Shader::isAvailable())</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; &quot;Shader are not available&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Load shaders</span><br><span class="line">	sf::Shader shader;</span><br><span class="line">	if (!shader.loadFromFile(&quot;shader.frag&quot;, sf::Shader::Fragment))</span><br><span class="line">	&#123;</span><br><span class="line">		std::cerr &lt;&lt; &quot;Error while shaders&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// ___________________________</span><br><span class="line">	// ::: Load distortion map :::</span><br><span class="line"></span><br><span class="line">	sf::Texture distortionMap;</span><br><span class="line"></span><br><span class="line">	if (!distortionMap.loadFromFile(&quot;distortion_map.png&quot;))</span><br><span class="line">	&#123;</span><br><span class="line">		sf::err() &lt;&lt; &quot;Error while loading distortion map&quot; &lt;&lt; std::endl;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// It is important to set repeated to true to enable scrolling upwards</span><br><span class="line">	distortionMap.setRepeated(true);</span><br><span class="line">	// Setting smooth to true lets us use small maps even on larger images</span><br><span class="line">	distortionMap.setSmooth(true);</span><br><span class="line"></span><br><span class="line">	// Set texture to the shader</span><br><span class="line">	shader.setParameter(&quot;currentTexture&quot;, sf::Shader::CurrentTexture);</span><br><span class="line">	shader.setParameter(&quot;distortionMapTexture&quot;, distortionMap);</span><br><span class="line"></span><br><span class="line">	// Shader parameters</span><br><span class="line">	float distortionFactor = .05f;</span><br><span class="line">	float riseFactor = .2f;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	// _________________</span><br><span class="line">	// ::: Main loop :::</span><br><span class="line"></span><br><span class="line">	sf::Clock timer;</span><br><span class="line">	while (window.isOpen())</span><br><span class="line">	&#123;</span><br><span class="line">		// Process events</span><br><span class="line">		sf::Event event;</span><br><span class="line">		while (window.pollEvent(event))</span><br><span class="line">		&#123;</span><br><span class="line">			// Close the window if a key is pressed or if requested</span><br><span class="line">			if (event.type == sf::Event::Closed) window.close();</span><br><span class="line"></span><br><span class="line">			// If a key is pressed</span><br><span class="line">			if (event.type == sf::Event::KeyPressed)</span><br><span class="line">			&#123;</span><br><span class="line">				switch (event.key.code)</span><br><span class="line">				&#123;</span><br><span class="line">					// If escape is pressed, close the application</span><br><span class="line">				case  sf::Keyboard::Escape: window.close(); break;</span><br><span class="line"></span><br><span class="line">					// Process the up, down, left and right keys to modify parameters</span><br><span class="line">				case sf::Keyboard::Up:     distortionFactor *= 2.f;    break;</span><br><span class="line">				case sf::Keyboard::Down:    distortionFactor /= 2.f;    break;</span><br><span class="line">				case sf::Keyboard::Left:    riseFactor *= 2.f;          break;</span><br><span class="line">				case sf::Keyboard::Right:   riseFactor /= 2.f;          break;</span><br><span class="line">				default: break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// Set shader parameters</span><br><span class="line">		shader.setParameter(&quot;time&quot;, timer.getElapsedTime().asSeconds());</span><br><span class="line">		shader.setParameter(&quot;distortionFactor&quot;, distortionFactor);</span><br><span class="line">		shader.setParameter(&quot;riseFactor&quot;, riseFactor);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		// Clear the window and apply grey background</span><br><span class="line">		window.clear(sf::Color(127, 127, 127));</span><br><span class="line"></span><br><span class="line">		// Draw the sprite and apply shader</span><br><span class="line">		sprite.setPosition(window.getSize().x / 2., window.getSize().y / 2.);</span><br><span class="line">		sprite.setScale(2, 2);</span><br><span class="line">		window.draw(sprite, &amp;shader);</span><br><span class="line"></span><br><span class="line">		// Update display and wait for vsync</span><br><span class="line">		window.display();</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>最终效果图</strong></p>
-<p><img src="http://q0he94stf.bkt.clouddn.com/sfml_shader.gif" alt></p>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p> <a href="https://www.sfml-dev.org/tutorials/2.5/" target="_blank" rel="noopener"><code>sfml官方教程/文档</code></a></p>
-<p><a href="https://www.lucidarme.me/sfml-tutorial/" target="_blank" rel="noopener"><code>国外某大神sfml教程</code></a></p>
+<p><img src="/gallery/img/sfml_shader.gif" alt></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p> <a href="https://www.sfml-dev.org/tutorials/2.5/" target="_blank" rel="noopener">sfml官方教程/文档</a></p>
+<!-- [国外某大神sfml教程](https://www.lucidarme.me/sfml-tutorial/ ) -->
+
 
         </div>
         
@@ -292,13 +293,6 @@
         </div>
         
         
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/05/hello-world/">
-                <span class="level-item">Initial hexo</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
     </div>
 </div>
 
@@ -368,7 +362,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        4
                     </p>
                 </div>
             </div>
@@ -577,7 +571,7 @@
             
             <a href="/2019/11/14/fe-screen/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://q0he94stf.bkt.clouddn.com/frontend.jpg" alt="前端各种分辨率测试工具Resolution Test">
+                    <img class="thumbnail" src="/gallery/thumbnails/frontend.jpg" alt="前端各种分辨率测试工具Resolution Test">
                 </p>
             </a>
             
@@ -630,25 +624,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/05/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnails/1.png" alt="Initial hexo">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T12:43:15.320Z">2019-11-05</time></div>
-                    <a href="/2019/11/05/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Initial hexo</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -666,7 +641,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -771,7 +746,7 @@
             
             <a href="/2019/11/14/fe-screen/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="http://q0he94stf.bkt.clouddn.com/frontend.jpg" alt="前端各种分辨率测试工具Resolution Test">
+                    <img class="thumbnail" src="/gallery/thumbnails/frontend.jpg" alt="前端各种分辨率测试工具Resolution Test">
                 </p>
             </a>
             
@@ -824,25 +799,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/05/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/gallery/thumbnails/1.png" alt="Initial hexo">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-05T12:43:15.320Z">2019-11-05</time></div>
-                    <a href="/2019/11/05/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Initial hexo</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -860,7 +816,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
