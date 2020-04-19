@@ -11,16 +11,16 @@
 <title>Vue.js 组件通讯 REVIEW - 仮想化</title>
 
 
-    <meta name="description" content="组件通讯是vue组件化常用技术，本文对组件通讯的方法进行一个总结。 父组件到子组件prop传值所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。 1234567">
+    <meta name="description" content="组件通讯是vue组件化常用技术，本文对组件通讯的方法进行一个总结。">
 <meta name="keywords" content="vue,frontend">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue.js 组件通讯 REVIEW">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;2020&#x2F;04&#x2F;10&#x2F;vue-communicate&#x2F;index.html">
 <meta property="og:site_name" content="Imagination">
-<meta property="og:description" content="组件通讯是vue组件化常用技术，本文对组件通讯的方法进行一个总结。 父组件到子组件prop传值所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。 1234567">
+<meta property="og:description" content="组件通讯是vue组件化常用技术，本文对组件通讯的方法进行一个总结。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2020-04-19T07:02:21.803Z">
+<meta property="og:updated_time" content="2020-04-19T07:16:41.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
 
@@ -156,7 +156,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 959 个字)
+                    6 分钟 读完 (大约 960 个字)
                 </span>
                 
                 
@@ -170,6 +170,10 @@ var _hmt = _hmt || [];
         </h1>
         <div class="content">
             <p>组件通讯是vue组件化常用技术，本文对组件通讯的方法进行一个总结。</p>
+<a id="more"></a>
+
+
+
 <h2 id="父组件到子组件"><a href="#父组件到子组件" class="headerlink" title="父组件到子组件"></a>父组件到子组件</h2><h3 id="prop传值"><a href="#prop传值" class="headerlink" title="prop传值"></a><a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">prop传值</a></h3><p>所有的 prop 都使得其父子 prop 之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。</p>
 <figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//child</span><br><span class="line">props:&#123;</span><br><span class="line">	msg: String,</span><br><span class="line">	obj: Object</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//parent</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ChildNode</span> <span class="hljs-attr">msg</span>=<span class="hljs-string">"Hello world!"</span> <span class="hljs-attr">:obj</span>=<span class="hljs-string">"info"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ChildNode</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
