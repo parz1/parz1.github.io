@@ -8,21 +8,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>前端各种分辨率测试工具Resolution Test - 仮想化</title>
+<title>标签: frontend - 仮想化</title>
 
 
-    <meta name="description" content="前端分辨率测试工具，你值得拥有。 Resolution Test">
-<meta name="keywords" content="前端工具">
-<meta property="og:type" content="article">
-<meta property="og:title" content="前端各种分辨率测试工具Resolution Test">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;2019&#x2F;11&#x2F;14&#x2F;fe-screen&#x2F;index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Imagination">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;tags&#x2F;frontend&#x2F;index.html">
 <meta property="og:site_name" content="Imagination">
-<meta property="og:description" content="前端分辨率测试工具，你值得拥有。 Resolution Test">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;gallery&#x2F;thumbnails&#x2F;frontend.jpg">
-<meta property="og:updated_time" content="2019-12-19T08:02:24.418Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;gallery&#x2F;thumbnails&#x2F;frontend.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;blog.parz1.com&#x2F;images&#x2F;og_image.png">
 
 
 
@@ -86,7 +82,7 @@ var _hmt = _hmt || [];
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="前端各种分辨率测试工具Resolution Test" height="28">
+                <img src="/images/logo.png" alt="仮想化" height="28">
             
             </a>
         </div>
@@ -135,30 +131,35 @@ var _hmt = _hmt || [];
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="/gallery/thumbnails/frontend.jpg" alt="前端各种分辨率测试工具Resolution Test">
-        </span>
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">frontend</a></li>
+        </ul>
+        </nav>
     </div>
+</div>
+
+    
+<div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-13T17:56:21.000Z">2019-11-14</time>
+                <time class="level-item has-text-grey" datetime="2020-04-10T11:44:41.000Z">2020-04-10</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                <a class="has-link-grey -link" href="/categories/Vue/">Vue</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 88 个字)
+                    6 分钟 读完 (大约 959 个字)
                 </span>
                 
                 
@@ -167,26 +168,77 @@ var _hmt = _hmt || [];
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                前端各种分辨率测试工具Resolution Test
+                <a class="has-link-black-ter" href="/2020/04/10/vue-communicate/">Vue.js 组件通讯 REVIEW</a>
             
         </h1>
         <div class="content">
-            <p>前端分辨率测试工具，你值得拥有。</p>
-<h3 id="Resolution-Test"><a href="#Resolution-Test" class="headerlink" title="Resolution Test"></a>Resolution Test</h3><p><img src="http://q0he94stf.bkt.clouddn.com/resolutiontest.png" alt><a id="more"></a></p>
-<p>使用方法非常简单，添加到插件里点击它即可。</p>
-<p><img src="http://q0he94stf.bkt.clouddn.com/resolutiontest-ui.png" alt></p>
-<p><a href="https://www.benbeckford.com/" target="_blank" rel="noopener"><code>官网</code></a></p>
-<p>如果你有更好的方法和工具，欢迎评论或给我发邮件 :)</p>
+            <p>组件通讯是vue组件化常用技术，本文对组件通讯的方法进行一个总结。</p>
+<h2 id="父组件到子组件"><a href="#父组件到子组件" class="headerlink" title="父组件到子组件"></a>父组件到子组件</h2><h3 id="prop传值"><a href="#prop传值" class="headerlink" title="prop传值"></a><a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">prop传值</a></h3><p>所有的 prop 都使得其父子 prop 之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//child</span><br><span class="line">props:&#123;</span><br><span class="line">	msg: String,</span><br><span class="line">	obj: Object</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//parent</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ChildNode</span> <span class="hljs-attr">msg</span>=<span class="hljs-string">"Hello world!"</span> <span class="hljs-attr">:obj</span>=<span class="hljs-string">"info"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ChildNode</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7/" rel="tag">前端工具</a>
-                </div>
-            </div>
+<h3 id="非prop的Attribute"><a href="#非prop的Attribute" class="headerlink" title="非prop的Attribute"></a>非prop的Attribute</h3><p>严格意义来说不算组件通信，但在一些需要被继承的特性出现时，就会变得很有用。这个模式允许你在使用基础组件的时候更像是使用原始的 HTML 元素，而不会担心哪个元素是真正的根元素（文档原话）。这在开发自定义组件时非常有用。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//parent</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ParentInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> @<span class="hljs-attr">input</span>=<span class="hljs-string">"handleInput"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ParentInput</span>&gt;</span></span><br><span class="line"></span><br><span class="line">//child</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span></span><br><span class="line">      &#123;&#123; label &#125;&#125;</span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">input</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">v-bind</span>=<span class="hljs-string">"$attrs"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">v-bind:value</span>=<span class="hljs-string">"value"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">v-on:input</span>=<span class="hljs-string">"$emit('input', $event.target.value)"</span></span></span><br><span class="line"><span class="hljs-tag">      &gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="line"><span class="hljs-actionscript">    inheritAttrs:<span class="hljs-literal">false</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="将原生事件绑定到组件"><a href="#将原生事件绑定到组件" class="headerlink" title="将原生事件绑定到组件"></a><a href="https://cn.vuejs.org/v2/guide/components-custom-events.html#将原生事件绑定到组件" target="_blank" rel="noopener">将原生事件绑定到组件</a></h3><p>使用v-on=”$listeners”可以将组件的根元素变成<strong>完全透明的包裹器</strong>，和$attrs类似。</p>
+<h2 id="子组件到父组件"><a href="#子组件到父组件" class="headerlink" title="子组件到父组件"></a>子组件到父组件</h2><h3 id="自定义事件-emit"><a href="#自定义事件-emit" class="headerlink" title="自定义事件 $emit"></a>自定义事件 $emit</h3><blockquote>
+<p>tips: <strong>始终使用 kebab-case 的事件名</strong></p>
+</blockquote>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//child</span><br><span class="line">this.$emit("new-event",target.value);</span><br><span class="line"></span><br><span class="line">//parent</span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ChildNode</span> @<span class="hljs-attr">new-event</span>=<span class="hljs-string">"handleNewEvent"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ChildNode</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="兄弟组件通信"><a href="#兄弟组件通信" class="headerlink" title="兄弟组件通信"></a>兄弟组件通信</h2><h3 id="共同祖辈搭桥-parent-root"><a href="#共同祖辈搭桥-parent-root" class="headerlink" title="共同祖辈搭桥 $parent/$root"></a>共同祖辈搭桥 $parent/$root</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//brother1</span></span><br><span class="line"><span class="hljs-keyword">this</span>.$parent.$on(<span class="hljs-string">'foo'</span>,handle)</span><br><span class="line"><span class="hljs-comment">//brother2</span></span><br><span class="line"><span class="hljs-keyword">this</span>.$parent.$emit(<span class="hljs-string">'foo'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="祖先和后代"><a href="#祖先和后代" class="headerlink" title="祖先和后代"></a>祖先和后代</h2><h3 id="provide-inject"><a href="#provide-inject" class="headerlink" title="provide/inject"></a>provide/inject</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//ancestor</span></span><br><span class="line">provide()&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> &#123;</span><br><span class="line">		foo:<span class="hljs-string">'foo'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//descendant</span></span><br><span class="line">inject: [<span class="hljs-string">'foo'</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="任意两个组件间"><a href="#任意两个组件间" class="headerlink" title="任意两个组件间"></a>任意两个组件间</h2><h3 id="事件总线（Bus类）"><a href="#事件总线（Bus类）" class="headerlink" title="事件总线（Bus类）"></a>事件总线（Bus类）</h3><p>创建一个Bus类负责事件派发、监听和处理回调，平时还可以用的方法是new一个Vue实例来充当Bus</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bus</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">        &#123;</span></span><br><span class="line"><span class="hljs-comment">        	eventname:[fn1, fn2]</span></span><br><span class="line"><span class="hljs-comment">        &#125;</span></span><br><span class="line"><span class="hljs-comment">        */</span></span><br><span class="line">        <span class="hljs-keyword">this</span>.callbacks = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $on(name, fn) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.callbacks[name] = <span class="hljs-keyword">this</span>.callbacks[name] || []</span><br><span class="line">        <span class="hljs-keyword">this</span>.callbacks[name].push(fn)</span><br><span class="line">    &#125;</span><br><span class="line">    $emit(name, args) &#123;</span><br><span class="line">		<span class="hljs-keyword">this</span>.callbacks[name].forEach(<span class="hljs-function"><span class="hljs-params">cb</span>=&gt;</span>cb(args))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//main.js</span></span><br><span class="line">Vue.prototype.$bus = <span class="hljs-keyword">new</span> Bus()</span><br><span class="line"><span class="hljs-comment">//OR</span></span><br><span class="line">Vue.prototype.$bus = <span class="hljs-keyword">new</span> Vue()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//child1</span></span><br><span class="line"><span class="hljs-keyword">this</span>.$bus.$on(<span class="hljs-string">'foo'</span>, cb)</span><br><span class="line"><span class="hljs-comment">//child2</span></span><br><span class="line"><span class="hljs-keyword">this</span>.$bus.$emit(<span class="hljs-string">'foo'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="vuex状态树"><a href="#vuex状态树" class="headerlink" title="vuex状态树"></a>vuex状态树</h3><p>附上一张浅显易懂的图</p>
+<p><a href="https://imgchr.com/i/JuHU39" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/04/19/JuHU39.png" alt="JuHU39.png"></a></p>
+<h2 id="涉及到的API"><a href="#涉及到的API" class="headerlink" title="涉及到的API"></a>涉及到的API</h2><blockquote>
+<p><a href="https://cn.vuejs.org/v2/api/#vm-attrs" target="_blank" rel="noopener">vm.$attrs</a></p>
+<blockquote>
+<p>2.4.0 新增</p>
+</blockquote>
+<ul>
+<li><p><strong>类型</strong>：<code>{ [key: string]: string }</code></p>
+</li>
+<li><p><strong>只读</strong></p>
+</li>
+<li><p><strong>详细</strong>：</p>
+<p>包含了父作用域中不作为 prop 被识别 (且获取) 的 attribute 绑定 (<code>class</code> 和 <code>style</code> 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (<code>class</code> 和 <code>style</code> 除外)，并且可以通过 <code>v-bind=&quot;$attrs&quot;</code> 传入内部组件——在创建高级别的组件时非常有用</p>
+</li>
+</ul>
+<p><a href="https://cn.vuejs.org/v2/api/#inheritAttrs" target="_blank" rel="noopener">inheritAttrs</a></p>
+<blockquote>
+<p>2.4.0 新增</p>
+</blockquote>
+<ul>
+<li><p><strong>类型</strong>：<code>boolean</code></p>
+</li>
+<li><p><strong>默认值</strong>：<code>true</code></p>
+</li>
+<li><p><strong>详细</strong>：</p>
+<p>默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上。当撰写包裹一个目标元素或另一个组件的组件时，这可能不会总是符合预期行为。通过设置 <code>inheritAttrs</code> 到 <code>false</code>，这些默认行为将会被去掉。而通过 (同样是 2.4 新增的) 实例属性 <code>$attrs</code> 可以让这些 attribute 生效，且可以通过 <code>v-bind</code> 显性的绑定到非根元素上。</p>
+<p>注意：这个选项<strong>不影响</strong> <code>class</code> 和 <code>style</code> 绑定。</p>
+</li>
+</ul>
+<p><a href="https://cn.vuejs.org/v2/api/#vm-listeners" target="_blank" rel="noopener">vm.$listeners</a></p>
+<blockquote>
+<p>2.4.0 新增</p>
+</blockquote>
+<ul>
+<li><p><strong>类型</strong>：<code>{ [key: string]: Function | Array }</code></p>
+</li>
+<li><p><strong>只读</strong></p>
+</li>
+<li><p><strong>详细</strong>：</p>
+<p>包含了父作用域中的 (不含 <code>.native</code> 修饰器的) <code>v-on</code> 事件监听器。它可以通过 <code>v-on=&quot;$listeners&quot;</code> 传入内部组件——在创建更高层次的组件时非常有用。</p>
+</li>
+</ul>
+</blockquote>
+
         </div>
         
         
@@ -196,95 +248,11 @@ var _hmt = _hmt || [];
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="http://q0he94stf.bkt.clouddn.com/zfb.JPG" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="http://q0he94stf.bkt.clouddn.com/wx.JPG" alt="微信"></div>
-</a>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<a class="button is-warning donate" onclick="document.getElementById(&#39;paypal-donate-form&#39;).submit()">
-    <span class="icon is-small">
-        <i class="fab fa-paypal"></i>
-    </span>
-    <span>Paypal</span>
-</a>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" id="paypal-donate-form">
-    <input type="hidden" name="cmd" value="_donations" />
-    <input type="hidden" name="business" value="parz1zhou@outlook.com" />
-    <input type="hidden" name="currency_code" value="USD" />
-</form>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/23/ppt-resources/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">PowerPoint Resource</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/11/grapics-clipping/">
-                <span class="level-item">Cohen-Sutherland 线段裁剪算法</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
 
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: true,
-        app_id: 'KIiHmNPqqkGWxlKyKehcAwEe-gzGzoHsz',
-        app_key: 'EIkKafCVYR9qy5GFHBuN6XKM',
-        placeholder: '开始你的论述'
-    });
-</script>
-
-    </div>
-</div>
 </div>
                 
 
@@ -982,7 +950,7 @@ var _hmt = _hmt || [];
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="前端各种分辨率测试工具Resolution Test" height="28">
+                    <img src="/images/logo.png" alt="仮想化" height="28">
                 
                 </a>
                 <p class="is-size-7">
